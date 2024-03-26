@@ -1,0 +1,26 @@
+<h2>Tambah Kontak</h2>
+<% if (typeof errors != "undefined"){ %>
+<div class="alert alert-danger" role="alert">
+  <ul>
+  <% errors.forEach(error=>{ %>
+    <li><%= error.msg %></li>
+  <% }) %>
+  </ul>
+</div>
+<% } %>
+<% const param = typeof req != "undefined" %>
+<form method="post" action="/contact/add">
+  <div class="mb-3">
+    <label for="nama" class="form-label">Nama</label>
+    <input value="<%=param?req.nama:""%>" type="text" class="form-control" name="nama" id="nama" required>
+  </div>
+  <div class="mb-3">
+    <label for="telp" class="form-label">No Telp.</label>
+    <input value="<%=param?req.telp:""%>" type="text" class="form-control" name="telp" id="telp" required>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input value="<%=param?req.email:""%>" type="email" class="form-control" name="email" id="email" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
